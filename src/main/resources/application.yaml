@@ -5,8 +5,15 @@ spring:
   application:
     name: bank-service-registry
 
+bank:
+  serviceRegistry:
+    username: serviceregistry
+    password: ${PASSWORD}
+
 eureka:
   client:
     register-with-eureka: false
     fetch-registry: false
+    service-url:
+      defaultZone: 'http://${bank.serviceRegistry.username}:${PASSWORD}@localhost:8761/eureka'
 
